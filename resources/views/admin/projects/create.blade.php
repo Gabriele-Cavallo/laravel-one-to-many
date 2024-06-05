@@ -25,20 +25,20 @@
         @enderror
         {{-- /Project name input --}}
 
-        {{-- Project type input --}}
+        {{-- Project type select --}}
         <div class="mb-3">
-          <label for="type_id" class="form-label">Project type</label>
-          <select class="form-select" id="type_id" aria-label="Default select example" name="type_id">
+            <label for="type_id" class="form-label">Project type</label>
+            <select class="form-select" id="type_id" aria-label="Default select example" name="type_id">
             <option value="">Select type</option>
             @foreach ($types as $type)
                 <option @selected($type->id == old('type_id')) value="{{ $type->id }}">{{ $type->name }}</option>
             @endforeach
-          </select>
+            </select>
         </div>
         @error('name')
             <div class="alert alert-danger">{{ $message }}</div>
         @enderror
-        {{-- /Project type input --}}
+        {{-- /Project type select --}}
 
         {{-- Image input --}}
         <div class="mb-3">
