@@ -25,6 +25,21 @@
         @enderror
         {{-- /Project name input --}}
 
+        {{-- Project type input --}}
+        <div class="mb-3">
+          <label for="type_id" class="form-label">Project type</label>
+          <select class="form-select" id="type_id" aria-label="Default select example" name="type_id">
+            <option value="">Select type</option>
+            @foreach ($types as $type)
+                <option @selected($type->id == old('type_id')) value="{{ $type->id }}">{{ $type->name }}</option>
+            @endforeach
+          </select>
+        </div>
+        @error('name')
+            <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
+        {{-- /Project type input --}}
+
         {{-- Image input --}}
         <div class="mb-3">
             <label for="cover_image" class="form-label">Upload image</label>

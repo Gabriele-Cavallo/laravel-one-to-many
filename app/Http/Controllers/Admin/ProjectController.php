@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Project;
+use App\Models\Type;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Storage;
@@ -20,7 +21,8 @@ class ProjectController extends Controller
     public function index()
     {
         $projects = Project::all();
-        return view('admin.projects.index', compact('projects'));
+        $types = Type::all();
+        return view('admin.projects.index', compact('projects', 'types'));
     }
 
     /**
@@ -30,7 +32,8 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return view('admin.projects.create');
+        $types = Type::all();
+        return view('admin.projects.create', compact('types'));
     }
 
     /**
@@ -46,7 +49,8 @@ class ProjectController extends Controller
                 'name' => 'required|min:1|max:100|unique:projects,name',
                 'client_name' => 'required|min:1|max:100',
                 'summary' => 'nullable|min:10',
-                'cover_image' => 'nullable|image|max:512'
+                'cover_image' => 'nullable|image|max:512',
+                'type_id' => 'nullable|exists:types,id'
             ],
             [
                 'name.required' => 'Il nome del progetto è obbligatorio',
@@ -120,7 +124,8 @@ class ProjectController extends Controller
                 ],
                 'client_name' => 'required|min:1|max:100',
                 'summary' => 'nullable|min:10',
-                'cover_image' => 'nullable|image|max:512'
+                'cover_image' => 'nullable|image|max:512',
+                'type_id' => 'nullable|exists:types,id'
             ],
             [
                 'name.required' => 'Il nome del progetto è obbligatorio',

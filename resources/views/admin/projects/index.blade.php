@@ -20,7 +20,7 @@
                     <td><strong>{{ $project->id }}</strong></td>
                     <td>{{ $project->name }}</td>
                     <td>{{ $project->slug }}</td>
-                    <td>[Type]</td>
+                    <td class="no-wrap">{{ $project->type ? $project->type->name : 'No type' }}</td>
                     <td>{{ $project->client_name }}</td>
                     <td>{{ $project->summary }}</td>
                     <td class="text-center">
