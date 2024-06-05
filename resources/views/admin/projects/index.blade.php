@@ -9,6 +9,7 @@
             <th>ID</th>
             <th>Project Name</th>
             <th>Slug</th>
+            <th>Type</th>
             <th>Client Name</th>
             <th>Summary</th>
             <th>Actions</th>
@@ -19,6 +20,7 @@
                     <td><strong>{{ $project->id }}</strong></td>
                     <td>{{ $project->name }}</td>
                     <td>{{ $project->slug }}</td>
+                    <td>[Type]</td>
                     <td>{{ $project->client_name }}</td>
                     <td>{{ $project->summary }}</td>
                     <td class="text-center">
